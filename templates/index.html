@@ -3,28 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Development Shanto - Stylish Name Maker for TikTok and Arabic names.">
-    <meta name="keywords" content="Shanto, Development Shanto, Stylish Name, Arabic Name, shanto2993">
     <title>Development Shanto | Stylish Name Maker</title>
     <style>
         body { background: #0f0f0f; color: #fff; font-family: sans-serif; text-align: center; margin: 0; }
         .header { background: linear-gradient(45deg, #1a1a1a, #333); padding: 20px; border-bottom: 3px solid #00d2ff; }
-        .dev-info { margin-top: 10px; font-size: 14px; color: #bbb; }
         .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
         .box { flex: 1; min-width: 300px; max-width: 500px; background: #1e1e1e; padding: 15px; border-radius: 15px; border: 1px solid #333; }
-        input { padding: 12px; width: 70%; border-radius: 25px; border: 1px solid #444; background: #222; color: #fff; outline: none; }
-        button { padding: 12px 25px; background: #00d2ff; border: none; border-radius: 25px; color: #000; font-weight: bold; cursor: pointer; }
+        input { padding: 12px; width: 70%; border-radius: 25px; border: 1px solid #444; background: #222; color: #fff; }
+        button { padding: 12px 25px; background: #00d2ff; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; }
         .name-item { background: #2a2a2a; margin: 8px 0; padding: 12px; border-radius: 8px; cursor: pointer; }
-        .plain-box { background: linear-gradient(90deg, #1d976c, #93f9b9); color: #000; font-weight: bold; }
     </style>
 </head>
 <body>
     <div class="header">
         <h2>Assalamu Alaikum</h2>
-        <div class="dev-info">
-            Developed by: <b>Development Shanto</b><br>
-            TikTok ID: <b>shanto2993</b>
-        </div>
+        <p>Developed by: <b>Development Shanto</b></p>
     </div>
     <div style="margin-top: 30px;">
         <form method="POST">
@@ -34,7 +27,7 @@
     </div>
     <div class="container">
         <div class="box">
-            <h3>Stylish Designs</h3>
+            <h3>Stylish Designs (100+)</h3>
             {% for s in eng %}
             <div class="name-item" onclick="copyText('{{s}}')">{{s}}</div>
             {% endfor %}
@@ -42,7 +35,7 @@
         <div class="box">
             <h3>Arabic Styles</h3>
             {% if plain_arb %}
-            <div class="name-item plain-box" onclick="copyText('{{plain_arb}}')">শুদ্ধ আরবি: {{plain_arb}}</div>
+            <div class="name-item" style="background:#1d976c" onclick="copyText('{{plain_arb}}')">শুদ্ধ আরবি: {{plain_arb}}</div>
             {% endif %}
             {% for s in arb %}
             <div class="name-item" onclick="copyText('{{s}}')">{{s}}</div>
@@ -57,4 +50,3 @@
     </script>
 </body>
 </html>
-
