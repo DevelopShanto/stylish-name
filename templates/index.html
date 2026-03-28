@@ -1,30 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stylish Name Maker</title>
+    <title>Name Styles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body { background: #121212; color: white; font-family: sans-serif; text-align: center; margin: 0; }
-        .tiktok { color: #fe2c55; font-weight: bold; padding: 15px; display: block; }
-        input { padding: 12px; width: 80%; border-radius: 8px; margin-bottom: 10px; background: #222; color: white; border: 1px solid #333; }
-        button { padding: 12px 20px; background: #00f2ea; border: none; border-radius: 8px; font-weight: bold; }
-        .row { display: flex; border-bottom: 1px solid #222; }
-        .col { flex: 1; padding: 12px; font-size: 0.9rem; cursor: pointer; }
-        .left { color: #00f2ea; border-right: 1px solid #333; }
-        .right { color: #ff0050; }
+        body { background: #111; color: white; font-family: sans-serif; text-align: center; }
+        .salem { color: #00f2ea; font-size: 1.2rem; margin: 10px 0; font-weight: bold; }
+        .tiktok { color: #ff0050; font-weight: bold; }
+        input { padding: 10px; border-radius: 5px; border: none; width: 70%; }
+        button { padding: 10px 20px; background: #00f2ea; border: none; border-radius: 5px; font-weight: bold; }
+        .row { display: flex; border-bottom: 1px solid #333; }
+        .col { flex: 1; padding: 15px; cursor: pointer; font-size: 1rem; }
+        .left { color: #00f2ea; border-right: 1px solid #444; }
+        .right { color: #ff0050; font-family: 'serif'; }
     </style>
 </head>
 <body>
-    <span class="tiktok">TikTok: {{ tiktok }}</span>
-    <form method="POST">
+    <div class="salem">{{ salem }}</div>
+    <div class="tiktok">TikTok: {{ tiktok }}</div>
+    <form method="POST" style="margin-top:20px;">
         <input type="text" name="name" placeholder="Enter Name..." required>
         <button type="submit">Magic</button>
     </form>
     {% if styles %}
     <div style="margin-top:20px;">
-        <div style="display:flex; background:#333; font-weight:bold; padding:10px 0;">
-            <div style="flex:1">English</div><div style="flex:1">Arabic</div>
+        <div style="display:flex; background:#222; padding:10px 0; font-weight:bold;">
+            <div style="flex:1">English Style</div>
+            <div style="flex:1">Arabic Style</div>
         </div>
         {% for s in styles %}
         <div class="row">
@@ -34,6 +36,11 @@
         {% endfor %}
     </div>
     {% endif %}
-    <script>function copy(t){navigator.clipboard.writeText(t);alert('Copied: '+t);}</script>
+    <script>
+        function copy(t){
+            navigator.clipboard.writeText(t);
+            alert('Copied: ' + t);
+        }
+    </script>
 </body>
 </html>
