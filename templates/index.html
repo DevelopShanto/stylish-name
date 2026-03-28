@@ -1,52 +1,39 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Development Shanto | Stylish Name Maker</title>
+    <title>Stylish Name Maker</title>
     <style>
-        body { background: #0f0f0f; color: #fff; font-family: sans-serif; text-align: center; margin: 0; }
-        .header { background: linear-gradient(45deg, #1a1a1a, #333); padding: 20px; border-bottom: 3px solid #00d2ff; }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
-        .box { flex: 1; min-width: 300px; max-width: 500px; background: #1e1e1e; padding: 15px; border-radius: 15px; border: 1px solid #333; }
-        input { padding: 12px; width: 70%; border-radius: 25px; border: 1px solid #444; background: #222; color: #fff; }
-        button { padding: 12px 25px; background: #00d2ff; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; }
-        .name-item { background: #2a2a2a; margin: 8px 0; padding: 12px; border-radius: 8px; cursor: pointer; }
+        body { background: #121212; color: white; font-family: sans-serif; text-align: center; margin: 0; }
+        .tiktok { color: #fe2c55; font-weight: bold; padding: 15px; display: block; }
+        input { padding: 12px; width: 80%; border-radius: 8px; margin-bottom: 10px; background: #222; color: white; border: 1px solid #333; }
+        button { padding: 12px 20px; background: #00f2ea; border: none; border-radius: 8px; font-weight: bold; }
+        .row { display: flex; border-bottom: 1px solid #222; }
+        .col { flex: 1; padding: 12px; font-size: 0.9rem; cursor: pointer; }
+        .left { color: #00f2ea; border-right: 1px solid #333; }
+        .right { color: #ff0050; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h2>Assalamu Alaikum</h2>
-        <p>Developed by: <b>Development Shanto</b></p>
-    </div>
-    <div style="margin-top: 30px;">
-        <form method="POST">
-            <input type="text" name="name" placeholder="আপনার নাম লিখুন..." required>
-            <button type="submit">ম্যাজিক দেখুন</button>
-        </form>
-    </div>
-    <div class="container">
-        <div class="box">
-            <h3>Stylish Designs (100+)</h3>
-            {% for s in eng %}
-            <div class="name-item" onclick="copyText('{{s}}')">{{s}}</div>
-            {% endfor %}
+    <span class="tiktok">TikTok: {{ tiktok }}</span>
+    <form method="POST">
+        <input type="text" name="name" placeholder="Enter Name..." required>
+        <button type="submit">Magic</button>
+    </form>
+    {% if styles %}
+    <div style="margin-top:20px;">
+        <div style="display:flex; background:#333; font-weight:bold; padding:10px 0;">
+            <div style="flex:1">English</div><div style="flex:1">Arabic</div>
         </div>
-        <div class="box">
-            <h3>Arabic Styles</h3>
-            {% if plain_arb %}
-            <div class="name-item" style="background:#1d976c" onclick="copyText('{{plain_arb}}')">শুদ্ধ আরবি: {{plain_arb}}</div>
-            {% endif %}
-            {% for s in arb %}
-            <div class="name-item" onclick="copyText('{{s}}')">{{s}}</div>
-            {% endfor %}
+        {% for s in styles %}
+        <div class="row">
+            <div class="col left" onclick="copy('{{s.eng}}')">{{ s.eng }}</div>
+            <div class="col right" onclick="copy('{{s.arb}}')">{{ s.arb }}</div>
         </div>
+        {% endfor %}
     </div>
-    <script>
-        function copyText(text) {
-            navigator.clipboard.writeText(text);
-            alert("কপি হয়েছে: " + text);
-        }
-    </script>
+    {% endif %}
+    <script>function copy(t){navigator.clipboard.writeText(t);alert('Copied: '+t);}</script>
 </body>
 </html>
