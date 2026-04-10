@@ -1,71 +1,43 @@
-cat <<EOF > index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stylish Name Generator - Shanto</title>
+    <title>Stylish Name - Shanto</title>
     <style>
-        body { background-color: #000; color: #00e5ff; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 10px; margin: 0; min-height: 100vh; }
-        /* জকজকে গ্লোয়িং ইফেক্ট */
-        .header-glow { text-shadow: 0 0 20px #00e5ff, 0 0 30px #00e5ff; font-size: 28px; margin-top: 20px; color: #00e5ff; }
-        .social-info { font-size: 14px; font-weight: bold; margin-bottom: 25px; }
+        body { background-color: #000; color: #00e5ff; font-family: sans-serif; text-align: center; padding: 10px; margin: 0; }
+        .header-glow { text-shadow: 0 0 15px #00e5ff, 0 0 25px #00e5ff; font-size: 26px; margin-top: 15px; }
+        .social-info { font-size: 13px; font-weight: bold; margin-bottom: 20px; }
         .tiktok { color: #ff0050; text-shadow: 0 0 10px #ff0050; }
         .facebook { color: #0084ff; text-shadow: 0 0 10px #0084ff; }
-        
-        .container { background: #0a0a0a; padding: 20px; border-radius: 20px; border: 1px solid #1a1a1a; max-width: 450px; margin: auto; box-shadow: 0 0 30px rgba(0,229,255,0.15); }
-        input { width: 88%; background: #000; border: 2px solid #222; color: #fff; padding: 15px; margin-bottom: 20px; border-radius: 12px; font-size: 18px; outline: none; text-align: center; box-shadow: inset 0 0 10px rgba(0,229,255,0.05); }
-        input:focus { border-color: #00e5ff; box-shadow: 0 0 15px rgba(0,229,255,0.4); }
-
-        .name-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        .name-table td { padding: 15px 10px; border-bottom: 1px solid #111; }
-        .style-name { color: #fff; font-size: 18px; text-align: left; }
-        .copy-btn { background: #00e5ff; color: #000; border: none; padding: 8px 18px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 12px; transition: 0.3s; }
-        .copy-btn:active { transform: scale(0.9); }
+        .container { background: #0a0a0a; max-width: 500px; margin: auto; padding: 20px; border-radius: 20px; border: 1px solid #222; box-shadow: 0 0 20px rgba(0,229,255,0.1); }
+        input { width: 85%; background: #000; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 10px; outline: none; text-align: center; font-size: 18px; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 15px 5px; border-bottom: 1px solid #111; color: #fff; font-size: 18px; text-align: left; }
+        .copy-btn { background: #00e5ff; color: #000; border: none; padding: 8px 15px; border-radius: 8px; font-weight: bold; cursor: pointer; float: right; }
     </style>
 </head>
 <body>
-
     <h1 class="header-glow">As-salamu Alaykum</h1>
     <div class="social-info">
         <span class="tiktok">TikTok: @shanto2993</span> | 
         <span class="facebook">FB: Classic Boy Shanto</span>
     </div>
-
     <div class="container">
-        <input type="text" id="nameInput" placeholder="Enter Name..." oninput="generate()">
-        <table class="name-table">
-            <tbody id="resultTable"></tbody>
-        </table>
+        <input type="text" id="nameInput" placeholder="Enter Name..." oninput="gen()">
+        <table id="res"></table>
     </div>
-
     <script>
-        function generate() {
+        function gen() {
             const n = document.getElementById('nameInput').value;
-            const table = document.getElementById('resultTable');
-            table.innerHTML = "";
+            const r = document.getElementById('res'); r.innerHTML = "";
             if(!n) return;
-
-            // আপনার স্ক্রিনশটের সব স্টাইল এখানে আছে
-            const styles = [
-                "╰"+n+"╮", "亗 "+n+" 亗", "『"+n+"』", "★"+n+"★", "♛ "+n+" ♛", "〆"+n+"〆",
-                "───⊱◈ "+n+" ◈⊰───", "◥꧁"+n+"꧂◤", "꧁❤•"+n+"•❤꧂", "×º°”˜`”°º× "+n+" ×º°”˜`”°º×",
-                "•—•—• "+n+" •—•—•", "❤( ᵘ ᵌᵘ) ❤️ "+n+" ❤️❤️( ᵘ ᵌᵘ) ❤️", "⚡"+n+"★", "♔ "+n+" ♔",
-                "『ST』 "+n, "V I P "+n, "I love you <3 "+n, "///❤️/// "+n+" ///❤️///",
-                "꧁☯︎"+n+"☯︎꧂", "⫷"+n+"⫸", "【"+n+"】", "⟨"+n+"⟩", "«"+n+"»",
-                "⚔️ "+n+" ⚔️", "☬ "+n+" ☬", "✿ "+n+" ✿", "❃ "+n+" ❃", "☁ "+n+" ☁",
-                "━═★ "+n+" ★═━", "⸔"+n+"⸕", "『"+n+"』•ᴮᴬᴰ", "╰‿╯"+n+"╰‿╯"
-            ];
-
-            styles.forEach(s => {
-                table.innerHTML += \`<tr>
-                    <td class="style-name">\${s}</td>
-                    <td style="text-align: right;"><button class="copy-btn" onclick="cp('\${s}')">COPY</button></td>
-                </tr>\`;
+            const s = ["亗 "+n+" 亗", "꧁༺"+n+"༻꧂", "『ST』"+n, "〆"+n+"〆", "★"+n+"★", "───⊱◈ "+n+" ◈⊰───", "◥꧁"+n+"꧂◤", "꧁❤•"+n+"•❤꧂", "⚡"+n+"★", "♔ "+n+" ♔", "V I P "+n, "///❤️/// "+n, "⚔️ "+n+" ⚔️", "☬ "+n+" ☬", "✿ "+n+" ✿"];
+            s.forEach(st => {
+                r.innerHTML += "<tr><td>"+st+"<button class='copy-btn' onclick='cp(\""+st+"\")'>COPY</button></td></tr>";
             });
         }
-        function cp(t) { navigator.clipboard.writeText(t).then(() => alert("Copied: " + t)); }
+        function cp(t) { navigator.clipboard.writeText(t).then(() => alert("Copied!")); }
     </script>
 </body>
 </html>
-EOF
