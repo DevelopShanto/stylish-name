@@ -1,0 +1,22 @@
+const screenshotStyles = [
+  (n) => `꧁༺ ${n} ༻꧂`,                     // Love Design 1
+  (n) => `─── ⋆⋅☆⋅⋆ 👑 ${n} 👑 ⋆⋅☆⋅⋆ ───`,   // Shanto with Stars
+  (n) => `×͜×  ALONE  BOY ${n}`,            // Alone Boy Style
+  (n) => `亗 ${n.split('').join(' ')} 亗`,     // Spaced Name with Crown
+  (n) => `👑〔 ${n.toUpperCase()} 〕👑`,      // Crown Box
+  (n) => `Cᵒᵒˡジ ${n} メ`,                  // Cool Style
+  (n) => `///❤️/// ${n} ///❤️///`,          // Heart Slash
+  (n) => `(っ- ‸ -)っ ♥ ${n} ♥`,             // Show Love Style
+  (n) => `ℐ ℒℴ𝓋ℯ 𝓎ℴ𝓊 ♡ ${n} 🌹`,           // Love You with Rose
+  (n) => `╰‿╯⚡ ${n} ★彡`,                  // Thunder Style
+  (n) => `ⒽⒶⓃⓉⓄ──────${n}`,              // Circle Letter Lead
+  (n) => `『IND』${n} 亗`,                 // IND Tag
+  (n) => `i°◝(⁰▿⁰)◜°i ${n} ♡`,             // Joyful Style
+  (n) => `⚛️ ${n.toUpperCase()} ⚛️`,        // Atomic Style
+  (n) => `—━▬デ ${n} ▬━—`,                 // Gun/Sword Style
+  (n) => `✨ ${n} ✨`,                      // Sparkle Style
+  (n) => `⊹⊱ ${n} ⊰⊹`,                     // Ornament Style
+  (n) => `༺✿ ${n} ✿༻`,                     // Flower Style
+  (n) => `˗ˏˋ ${n} ˎˊ˗`,                    // Quote Style
+  (n) => `╰╮${n}╭╯`                        // Bracket Style
+];
